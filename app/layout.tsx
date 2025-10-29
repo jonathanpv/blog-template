@@ -6,6 +6,7 @@ import { siteConfig } from "@/lib/site";
 import { metadataKeywords } from "./metadata";
 import { SiteNav } from "@/components/site-nav";
 import Footer from "@/components/footer";
+import localFont from 'next/font/local'
 import "@/app/globals.css";
 
 export const viewport: Viewport = {
@@ -22,6 +23,21 @@ export const metadata: Metadata = {
   keywords: metadataKeywords,
 };
 
+export const fontCommitMono = localFont({
+  src: '../public/fonts/CommitMono-700-Regular.otf',
+  variable: '--commit-mono'
+})
+
+export const fontPPNeuebit = localFont({
+  src: '../public/fonts/ppneuebit-bold.otf',
+  variable: '--pp-neuebit'
+})
+
+export const fontPPMondwest = localFont({
+  src: '../public/fonts/ppmondwest-regular.otf',
+  variable: '--pp-mondwest'
+})
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,7 +46,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${GeistSans.variable} ${GeistMono.variable} antialiased`}
+      className={`${GeistSans.variable} ${GeistMono.variable} ${fontCommitMono.variable}  ${fontPPNeuebit.variable} ${fontPPMondwest.variable} antialiased `}
       suppressHydrationWarning
     >
       <body>

@@ -1,35 +1,21 @@
-# MagicUI Blog
+# MagicUI Blog - redesigned with uncoverlab (designed-on-figma) components
 
 A modern, responsive blog built with Next.js 15, Fumadocs MDX, and Tailwind CSS. Beautiful interface for displaying articles, tutorials, and insights about React and modern web development.
 
 ## ✨ Features
 
-- 🎨 **Modern Design** - Clean, responsive interface
-- 📝 **MDX Support** - Write blog posts in MDX with full component support
-- 🌙 **Dark Mode** - Built-in dark/light theme toggle
-- 🏷️ **Tags & Categories** - Organize content with tags
-- ⭐ **Featured Posts** - Highlight your best articles
-- 📱 **Mobile Responsive** - Perfect on all devices
-- 🚀 **Fast Performance** - Optimized with Next.js 15
 
-## 🚀 Getting Started
+- **MDX Support** 
+- **Support for featured posts** 
+
+## Local Dev
 
 ```bash
-# Clone the repository
-git clone <repo-url>
-cd blog-template
-
-# Install dependencies
-pnpm install
-
-# Start development server
+pnpm i
 pnpm dev
-
-# Build for production
-pnpm build
 ```
 
-## ✍️ Adding Blog Posts
+## Adding Blog Posts
 
 Create a new MDX file in `blog/content/` with format `your-post-title.mdx`:
 
@@ -58,7 +44,7 @@ export default function Component() {
 ```
 ````
 
-## 🎨 Customization
+## Customization
 
 ### Adding New Tags/Categories
 
@@ -102,19 +88,3 @@ export const authors: Record<string, Author> = {
 ```
 
 Then reference your author in blog posts using the key (e.g., `author: "yourname"`).
-
-## 📖 Technologies Used
-
-- **Next.js 15** - React framework with App Router
-- **Fumadocs MDX** - MDX processing and components
-- **Tailwind CSS** - Utility-first CSS framework
-- **TypeScript** - Type-safe JavaScript
-- **Geist Font** - Modern typography
-
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
