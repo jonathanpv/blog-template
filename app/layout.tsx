@@ -14,14 +14,28 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
-  title: {
-    default: siteConfig.name,
-    template: `%s - ${siteConfig.name}`,  
+  title: "MotionMagic Blog",
+  description:
+    "Designed by @uncoverlab, expanded by @magicui, implemented by @jonpadven",
+  openGraph: {
+    title: "MotionMagic Blog",
+    images: [
+      {
+        url: "/blog-og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Blog image",
+      },
+    ],
   },
-  description: siteConfig.description,
-  keywords: metadataKeywords,
+  twitter: {
+    card: "summary_large_image",
+    title: "MotionMagic Blog",
+    description: "Designed by @uncoverlab, expanded by @magicui, implemented by @jonpadven",
+    images: ["/blog-og-image.png"],
+  },
 };
+
 
 export const fontCommitMono = localFont({
   src: '../public/fonts/CommitMono-700-Regular.otf',
