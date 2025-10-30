@@ -74,7 +74,7 @@ export default async function HomePage({
   }, {} as Record<string, number>);
 
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="min-h-screen bg-background flex flex-col items-center relative">
       <div className="absolute top-0 left-0 z-0 w-full h-[200px] [mask-image:linear-gradient(to_top,transparent_25%,black_95%)]">
         {/* <FlickeringGrid
           className="absolute top-0 left-0 size-full"
@@ -85,11 +85,11 @@ export default async function HomePage({
           flickerChance={0.05}
         /> */}
       </div>
-      <div className="pt-30 p-6 border-b border-border flex flex-col gap-6 min-h-[250px] justify-center relative z-10">
+      <div className="pt-30 max-w-2xl p-6 flex flex-col gap-6 min-h-[250px] justify-center relative z-10">
         <div className="max-w-7xl mx-auto w-full">
           <div className="flex flex-col gap-2">
-            <h1 className="font-medium text-4xl md:text-5xl tracking-tighter">
-              Magic UI Blog
+            <h1 className="font-extrabold text-4xl md:text-5xl tracking-tight">
+              Blog
             </h1>
             <p className="text-muted-foreground text-sm md:text-base lg:text-lg">
               Latest news and updates from Magic UI.
@@ -97,7 +97,7 @@ export default async function HomePage({
           </div>
         </div>
         {allTags.length > 0 && (
-          <div className="max-w-7xl mx-auto w-full">
+          <div className="max-w-2xl mx-auto w-full">
             <TagFilter
               tags={allTags}
               selectedTag={selectedTag}
@@ -110,9 +110,7 @@ export default async function HomePage({
       <div className="max-w-7xl mx-auto w-full  justify-center flex px-6 lg:px-0">
         <Suspense fallback={<div>Loading articles...</div>}>
         <div
-  className={`flex flex-wrap gap-[10px] max-w-3xl relative overflow-hidden  ${
-    filteredBlogs.length < 4 ? "border-b" : "border-b-0"
-  }`}
+  className={`flex flex-wrap gap-[10px] max-w-3xl relative  justify-center overflow-hidden`}
 >
             {filteredBlogs.map((blog) => {
               const date = new Date(blog.data.date);

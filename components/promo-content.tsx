@@ -1,6 +1,9 @@
+"use client"
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import { Button } from "./ui/button";
 
 interface PromoContentProps {
   variant?: "desktop" | "mobile";
@@ -13,29 +16,31 @@ export function PromoContent({
 }: PromoContentProps) {
   if (variant === "mobile") {
     return (
-      <div className={cn("border-t border-border bg-muted/20 p-3", className)}>
+      <div className={cn("flex flex-col gap-4 bg-muted/20 p-3", className)}>
         <div className="flex items-center gap-3">
-          <img
+          {/* <img
             src="/magicui-logo.png"
             alt="Magic UI"
             className="w-8 h-8 rounded object-cover flex-shrink-0"
-          />
+          /> */}
           <div className="flex-1 min-w-0">
-            <p className="text-xs font-medium text-foreground/90 truncate">
-              Try Magic UI Pro
+            <p className="text-xl font-medium text-foreground/90">
+              Land More Deals
             </p>
-            <p className="text-xs text-muted-foreground truncate">
-              Beautiful design system
+            <p className="text-xs text-muted-foreground">
+              Motion+ gives you templates, snippets, code that convert to users.
             </p>
           </div>
-          <a
-            href="#"
-            className="text-xs text-primary hover:text-primary/80 font-medium"
-            onClick={(e) => e.stopPropagation()}
-          >
-            Learn more
-          </a>
+          
         </div>
+        <Button
+            variant={"shiny"}
+            className="w-24"
+          >
+            <Link href="#" className="font-semibold">
+              Visit
+            </Link>
+          </Button>
       </div>
     );
   }

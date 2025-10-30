@@ -52,7 +52,7 @@ export default async function BlogPost({ params }: PageProps) {
   const formattedDate = formatDate(date);
 
   return (
-    <div className="min-h-screen bg-background relative">
+    <div className="min-h-screen bg-background  pt-20 relative">
       <HashScrollHandler />
       <div className="absolute top-0 left-0 z-0 w-full h-[200px] [mask-image:linear-gradient(to_top,transparent_25%,black_95%)]">
         <FlickeringGrid
@@ -65,11 +65,11 @@ export default async function BlogPost({ params }: PageProps) {
         />
       </div>
 
-      <div className="space-y-4 border-b border-border relative z-10">
-        <div className="max-w-7xl mx-auto flex flex-col gap-6 p-6">
+      <div className="space-y-4  relative z-10">
+        <div className="max-w-2xl mx-auto flex items-center flex-col gap-6 p-6">
           <div className="flex flex-wrap items-center gap-3 gap-y-5 text-sm text-muted-foreground">
             <Button variant="outline" asChild className="h-6 w-6">
-              <Link href="/">
+              <Link href="/blog">
                 <ArrowLeft className="w-4 h-4" />
                 <span className="sr-only">Back to all articles</span>
               </Link>
@@ -91,22 +91,22 @@ export default async function BlogPost({ params }: PageProps) {
             </time>
           </div>
 
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium tracking-tighter text-balance">
+          <h1 className="text-4xl text-center lg:text-start md:text-5xl lg:text-6xl font-medium tracking-tighter text-balance">
             {page.data.title}
           </h1>
 
           {page.data.description && (
-            <p className="text-muted-foreground max-w-4xl md:text-lg md:text-balance">
+            <p className="text-muted-foreground text-center lg:text-start max-w-4xl md:text-lg md:text-balance">
               {page.data.description}
             </p>
           )}
         </div>
       </div>
-      <div className="flex divide-x divide-border relative max-w-7xl mx-auto px-4 md:px-0 z-10">
-        <div className="absolute max-w-7xl mx-auto left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] lg:w-full h-full border-x border-border p-0 pointer-events-none" />
-        <main className="w-full p-0 overflow-hidden">
+      <div className="flex justify-center relative max-w-4xl mx-auto px-4 md:px-0 z-10">
+        <div className="absolute max-w-7xl mx-auto left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] lg:w-full h-full p-0 pointer-events-none" />
+        <main className="w-full p-0 max-w-2xl flex flex-col items-center overflow-hidden">
           {page.data.thumbnail && (
-            <div className="relative w-full h-[500px] overflow-hidden object-cover border border-transparent">
+            <div className="relative w-full max-w-xl h-[500px] overflow-hidden object-cover rounded-2xl">
               <Image
                 src={page.data.thumbnail}
                 alt={page.data.title}
@@ -116,8 +116,8 @@ export default async function BlogPost({ params }: PageProps) {
               />
             </div>
           )}
-          <div className="p-6 lg:p-10">
-            <div className="prose dark:prose-invert max-w-none prose-headings:scroll-mt-8 prose-headings:font-semibold prose-a:no-underline prose-headings:tracking-tight prose-headings:text-balance prose-p:tracking-tight prose-p:text-balance prose-lg">
+          <div className="p-6 lg:p-10 w-full">
+            <div className="prose dark:prose-invert w-full prose-headings:scroll-mt-8 prose-headings:font-semibold prose-a:no-underline prose-headings:tracking-tight prose-headings:text-balance prose-p:tracking-tight prose-p:text-balance prose-lg">
               <DocsBody>
                 <MDX />
               </DocsBody>
@@ -131,7 +131,7 @@ export default async function BlogPost({ params }: PageProps) {
           </div>
         </main>
 
-        <aside className="hidden lg:block w-[350px] flex-shrink-0 p-6 lg:p-10 bg-muted/60 dark:bg-muted/20">
+        <aside className="hidden rounded-4xl lg:block w-[250px] flex-shrink-0 p-2 bg-muted/60 dark:bg-muted/20">
           <div className="sticky top-20 space-y-8">
             {page.data.author && isValidAuthor(page.data.author) && (
               <AuthorCard author={getAuthor(page.data.author)} />
@@ -139,7 +139,7 @@ export default async function BlogPost({ params }: PageProps) {
             <div className="border border-border rounded-lg p-6 bg-card">
               <TableOfContents />
             </div>
-            <PromoContent variant="desktop" />
+            <PromoContent variant="mobile" />
           </div>
         </aside>
       </div>

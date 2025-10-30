@@ -12,6 +12,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { ThemeToggle } from "./theme-toggle"
+import { Button } from "./ui/button"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -76,13 +77,18 @@ export function SiteNav() {
 
   return (
     <>
-      <div className="flex w-full max-w-[706px] h-[20px] justify-between items-center absolute top-10 left-1/2 -translate-x-1/2 mx-auto my-0 bg-background border-b border-border/20 z-50">
+      <div className="flex w-full max-w-[706px] h-[20px] justify-between items-center absolute top-10 left-1/2 -translate-x-1/2 mx-auto my-0 bg-transparent border-b border-border/20 z-50">
         {/* Logo Section */}
         <div className="flex w-auto gap-1 items-center shrink-0 flex-nowrap relative">
           <div className="w-5 h-5 shrink-0 bg-[ur[](https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-10-28/wU3i34HP3z.png)] bg-cover bg-no-repeat relative z-[1]" />
-          <span className="flex w-[99px] h-5 justify-center items-start shrink-0 basis-auto font-pp-mondwest text-[20px] font-normal leading-[20px] text-foreground tracking-[-0.4px] relative text-center whitespace-nowrap z-[2]">
-            MotionMagic
-          </span>
+          <Button asChild variant="link">
+            <Link href="/">
+              <span className="flex w-[99px] h-5 justify-center items-start shrink-0 basis-auto font-pp-mondwest text-[20px] font-normal leading-[20px] text-foreground tracking-[-0.4px] relative text-center whitespace-nowrap z-[2]">
+              MotionMagic
+            </span>
+            </Link>
+          </Button>
+          
         </div>
 
         {/* Desktop Nav + Mobile Hamburger */}
@@ -188,7 +194,7 @@ export function SiteNav() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-background border-b border-border/20">
+        <div className="md:hidden fixed inset-0 z-40 bg-transparent border-b border-border/20">
           <div className="flex flex-col h-full pt-24 p-4 space-y-6">
             {/* Close Button */}
             <button

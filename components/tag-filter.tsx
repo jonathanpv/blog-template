@@ -64,23 +64,23 @@ export function TagFilter({ tags, selectedTag, tagCounts }: TagFilterProps) {
         <ChevronDown className="h-4 w-4" />
       </DrawerTrigger>
 
-      <DrawerContent className="md:hidden">
-        <DrawerHeader>
-          <h3 className="font-semibold text-sm">Select Category</h3>
+      <DrawerContent className="md:hidden rounded-4xl max-w-[320px] px-4">
+        <DrawerHeader className="border-b-0">
+          <h3 className="font-extrabold text-2xl tracking-tighter font-sans">Topics</h3>
         </DrawerHeader>
 
-        <DrawerBody>
+        <DrawerBody className="pt-0">
           <div className="space-y-2">
             {tags.map((tag) => (
               <button
                 key={tag}
                 onClick={() => handleTagClick(tag)}
-                className="w-full flex items-center justify-between font-medium cursor-pointer text-sm transition-colors"
+                className="w-full  flex items-center justify-between font-medium cursor-pointer text-sm transition-colors"
               >
                 <span
-                  className={`w-full flex items-center justify-between font-medium cursor-pointer text-sm transition-colors ${
+                  className={`w-full flex hover:underline items-center justify-between font-medium cursor-pointer text-sm transition-colors ${
                     selectedTag === tag
-                      ? "underline underline-offset-4 text-primary"
+                      ? "underline hover:no-underline underline-offset-4 text-primary"
                       : "text-muted-foreground"
                   }`}
                 >

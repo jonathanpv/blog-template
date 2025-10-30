@@ -1,19 +1,43 @@
 import React from "react";
 import { Button } from "./ui/button";
+import Link from "next/link";
+import { docs, meta } from "@/.source";
+import { loader } from "fumadocs-core/source";
+import { createMDXSource } from "fumadocs-mdx";
+import { Suspense } from "react";
+import { TagFilter } from "@/components/tag-filter";
+import { FlickeringGrid } from "@/components/magicui/flickering-grid";
+import { BlogCard } from "./blog-card";
 
-export const BlogCard = () => {
-  return (
-    <div className="w-[339px] flex flex-col rounded-[29.35px] aspect-square py-[26px] px-[28px] border border-muted">
-      <div className="w-[292px] h-[200px] rounded-[29.35px] bg-muted border border-muted border-b-0"></div>
-      <div className="flex flex-col gap-2 w-full">
-        <span className="text-lg text-foreground">Lorem</span>
-        <span className="text-sm text-foreground/60">
-          Lorem ipsum dolor. Lorem ipsum dolor Lorem ipsum dolor Lorem 
-        </span>
-      </div>
-    </div>
-  );
+interface BlogData {
+  title: string;
+  description: string;
+  date: string;
+  tags?: string[];
+  featured?: boolean;
+  readTime?: string;
+  author?: string;
+  authorImage?: string;
+  thumbnail?: string;
+}
+
+interface BlogPage {
+  url: string;
+  data: BlogData;
+}
+
+const formatDate = (date: Date): string => {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 };
+
+const blogSource = loader({
+  baseUrl: "/blog",
+  source: createMDXSource(docs, meta),
+});
 
 export const SectionHeader = () => {
   return (
@@ -27,20 +51,57 @@ export const SectionHeader = () => {
 };
 
 const BlogSection = () => {
+  const allPages = blogSource.getPages() as BlogPage[];
+  const sortedBlogs = allPages.sort((a, b) => {
+    const dateA = new Date(a.data.date).getTime();
+    const dateB = new Date(b.data.date).getTime();
+    return dateB - dateA;
+  });
+  const latestBlogs = sortedBlogs.slice(0, 4);
+
+  const firstRow = latestBlogs.slice(0, 2);
+  const secondRow = latestBlogs.slice(2, 4);
+
   return (
     <section className="container min-h-screen gap-2.5 flex justify-start py-80 items-center flex-col">
       <SectionHeader />
       <div className="flex gap-2.5">
-        <BlogCard />
-        <BlogCard />
+        {firstRow.map((blog) => {
+          const blogDate = new Date(blog.data.date);
+          const formattedDate = formatDate(blogDate);
+          return (
+            <BlogCard
+              key={blog.url}
+              url={blog.url}
+              title={blog.data.title}
+              description={blog.data.description}
+              date={formattedDate}
+              thumbnail={blog.data.thumbnail}
+              showRightBorder={firstRow.length < 2}
+            />
+          );
+        })}
       </div>
       <div className="flex gap-2.5">
-        <BlogCard />
-        <BlogCard />
+        {secondRow.map((blog) => {
+          const blogDate = new Date(blog.data.date);
+          const formattedDate = formatDate(blogDate);
+          return (
+            <BlogCard
+              key={blog.url}
+              url={blog.url}
+              title={blog.data.title}
+              description={blog.data.description}
+              date={formattedDate}
+              thumbnail={blog.data.thumbnail}
+              showRightBorder={secondRow.length < 2}
+            />
+          );
+        })}
       </div>
 
-      <Button variant={"shiny"} className="px-8 rounded-4xl font-pp-mondwest" size="lg">
-        See More
+      <Button asChild variant={"shiny"} className="px-8 rounded-4xl font-pp-mondwest" size="lg">
+        <Link href="/blog">See More</Link>
       </Button>
     </section>
   );
