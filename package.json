@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "fumadocs-mdx && next dev --turbopack",
+    "dev": "fumadocs-mdx && next dev",
     "build": "fumadocs-mdx && next build",
     "start": "next start",
     "lint": "next lint",

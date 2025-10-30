@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import * as React from "react"
-import { ChevronDown, User, Menu, X } from "lucide-react"
+import { User, Menu, X } from "lucide-react"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,7 +9,6 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { ThemeToggle } from "./theme-toggle"
 import { Button } from "./ui/button"

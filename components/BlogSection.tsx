@@ -4,9 +4,6 @@ import Link from "next/link";
 import { docs, meta } from "@/.source";
 import { loader } from "fumadocs-core/source";
 import { createMDXSource } from "fumadocs-mdx";
-import { Suspense } from "react";
-import { TagFilter } from "@/components/tag-filter";
-import { FlickeringGrid } from "@/components/magicui/flickering-grid";
 import { BlogCard } from "./blog-card";
 
 interface BlogData {
