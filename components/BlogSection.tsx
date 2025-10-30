@@ -62,7 +62,7 @@ const BlogSection = () => {
   return (
     <section className="container min-h-screen gap-2.5 flex justify-start py-80 items-center flex-col">
       <SectionHeader />
-      <div className="flex gap-2.5">
+      <div className="flex-col md:flex gap-2.5">
         {firstRow.map((blog) => {
           const blogDate = new Date(blog.data.date);
           const formattedDate = formatDate(blogDate);
@@ -79,7 +79,7 @@ const BlogSection = () => {
           );
         })}
       </div>
-      <div className="flex gap-2.5">
+      <div className="flex-col md:flex gap-2.5">
         {secondRow.map((blog) => {
           const blogDate = new Date(blog.data.date);
           const formattedDate = formatDate(blogDate);

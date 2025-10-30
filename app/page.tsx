@@ -9,7 +9,7 @@ const images = [
 
 const Page = () => {
   return (
-    <div className="mx-auto flex w-[619px] pt-50 flex-col items-center bg-background gap-[30px]">
+    <div className="mx-auto flex md:w-[619px] pt-50 flex-col items-center bg-background gap-[30px]">
       {/* Image Gallery */}
       <div className="flex ">
       {images.map((src, index) => (
@@ -25,11 +25,11 @@ const Page = () => {
       {/* Content Section */}
       <div className="flex flex-col items-center gap-3 self-stretch">
         {/* Heading */}
-        <h1 className="w-full text-center text-[48px] leading-[58.091px]">
+        <h1 className="w-full text-center text-[30px] md:text-[48px] leading-[58.091px]">
           <span className="font-sans font-medium tracking-[-0.48px] text-foreground">
             A modern
           </span>{" "}
-          <span className=" font-pp-mondwest text-[58px] leading-[69.6px]">
+          <span className=" font-pp-mondwest text-[40px] md:text-[58px] leading-[69.6px]">
             animation library
           </span>
           <br />

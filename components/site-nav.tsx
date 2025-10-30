@@ -1,7 +1,7 @@
 "use client"
 import Link from "next/link"
 import * as React from "react"
-import { User, Menu, X } from "lucide-react"
+import { User, Menu } from "lucide-react"
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/navigation-menu"
 import { ThemeToggle } from "./theme-toggle"
 import { Button } from "./ui/button"
+import Sheet from "@/components/ui/native-swipeable-sheets"
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -61,7 +62,7 @@ function ListItem({
     <li {...props}>
       <NavigationMenuLink asChild>
         <Link href={href}>
-          <div className="text-sm leading-none font-medium">{title}</div>
+          <div className="text-sm leading-none font-semibold tracking-tight">{title}</div>
           <p className="text-muted-foreground line-clamp-2 text-sm leading-snug">
             {children}
           </p>
@@ -74,9 +75,11 @@ function ListItem({
 export function SiteNav() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
 
+  const closeMobileMenu = () => setIsMobileMenuOpen(false)
+
   return (
     <>
-      <div className="flex w-full max-w-[706px] h-[20px] justify-between items-center absolute top-10 left-1/2 -translate-x-1/2 mx-auto my-0 bg-transparent border-b border-border/20 z-50">
+      <div className="flex px-12 w-full max-w-[706px] h-[20px] justify-between items-center absolute top-10 left-1/2 -translate-x-1/2 mx-auto my-0 bg-transparent border-b border-border/20 z-50">
         {/* Logo Section */}
         <div className="flex w-auto gap-1 items-center shrink-0 flex-nowrap relative">
           <div className="w-5 h-5 shrink-0 bg-[ur[](https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-10-28/wU3i34HP3z.png)] bg-cover bg-no-repeat relative z-[1]" />
@@ -99,7 +102,7 @@ export function SiteNav() {
               <NavigationMenuList className="m-0 p-0 list-none">
                 <NavigationMenuItem className="m-0 p-0">
                   <NavigationMenuTrigger className=" ">
-                    <span className="text-base leading-[20px]">Products</span>
+                    <span className="text-4xl leading-[20px]">Products</span>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="left-0 top-0 w-auto bg-popover text-popover-foreground border border-popover rounded-md shadow-lg p-0 min-w-[200px]">
                     <ul className="grid gap-2 p-4">
@@ -123,7 +126,7 @@ export function SiteNav() {
               <NavigationMenuList className="m-0 p-0 list-none">
                 <NavigationMenuItem className="m-0 p-0">
                   <NavigationMenuTrigger>
-                    <span className="text-base leading-[20px]">About</span>
+                    <span className="text-4xl leading-[20px]">About</span>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="left-0 top-0 w-auto bg-popover text-popover-foreground border border-popover rounded-md shadow-lg p-0 min-w-[200px]">
                     <ul className="grid gap-2 p-4">
@@ -133,7 +136,7 @@ export function SiteNav() {
                             href="/about/team"
                             className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-sidebar-accent data-[active]:text-sidebar-accent-foreground"
                           >
-                            <div className="text-sm font-medium leading-none">Team</div>
+                            <div className="text-sm font-semibold tracking-tight leading-none">Team</div>
                             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                               Meet the team behind MotionMagic.
                             </p>
@@ -146,7 +149,7 @@ export function SiteNav() {
                             href="/about/careers"
                             className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-sidebar-accent data-[active]:text-sidebar-accent-foreground"
                           >
-                            <div className="text-sm font-medium leading-none">Careers</div>
+                            <div className="text-sm font-semibold tracking-tight leading-none">Careers</div>
                             <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
                               Join our mission to revolutionize motion design.
                             </p>
@@ -162,7 +165,7 @@ export function SiteNav() {
             {/* Pricing */}
             <Link
               href="/pricing"
-              className="font-sans text-base font-medium leading-[20px] text-sidebar-foreground hover:text-sidebar-accent-foreground tracking-[-0.32px] no-underline outline-none"
+              className="font-sans text-4xl font-semibold tracking-tight leading-[20px] text-sidebar-foreground hover:text-sidebar-accent-foreground tracking-[-0.32px] no-underline outline-none"
             >
               Pricing
             </Link>
@@ -177,7 +180,7 @@ export function SiteNav() {
               className="flex items-center gap-2"
             >
               <User className="w-4 h-4" />
-              <span className="text-base">Login</span>
+              <span className="text-4xl">Login</span>
             </Link>
           </div>
 
@@ -191,89 +194,64 @@ export function SiteNav() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden fixed inset-0 z-40 bg-transparent border-b border-border/20">
-          <div className="flex flex-col h-full pt-24 p-4 space-y-6">
-            {/* Close Button */}
-            <button
-              className="self-end p-1"
-              onClick={() => setIsMobileMenuOpen(false)}
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            {/* Menu Items */}
-            <ul className="space-y-6 flex-1">
-              {/* Products */}
-              <li>
-                <h3 className="font-medium text-base mb-2">Products</h3>
-                <ul className="ml-4 space-y-2">
-                  {components.map((component) => (
-                    <li key={component.title}>
-                      <Link
-                        href={component.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block text-sm hover:text-accent transition-colors"
-                      >
-                        {component.title}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </li>
-
-              {/* About */}
-              <li>
-                <h3 className="font-medium text-base mb-2">About</h3>
-                <ul className="ml-4 space-y-2">
-                  <li>
-                    <Link
-                      href="/about/team"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="block text-sm hover:text-accent transition-colors"
-                    >
-                      Team
-                    </Link>
-                  </li>
-                  <li>
-                    <Link
-                      href="/about/careers"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="block text-sm hover:text-accent transition-colors"
-                    >
-                      Careers
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-
-              {/* Pricing */}
-              <li>
-                <Link
-                  href="/pricing"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-base font-medium hover:text-accent transition-colors"
-                >
-                  Pricing
-                </Link>
-              </li>
-
-              {/* Login */}
-              <li>
-                <Link
-                  href="/login"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="flex items-center gap-2 text-base font-medium hover:text-accent transition-colors"
-                >
-                  <User className="w-4 h-4" />
-                  Login
-                </Link>
-              </li>
-            </ul>
-          </div>
+      {/* Mobile Sheet Menu */}
+      <Sheet
+        open={isMobileMenuOpen}
+        close={closeMobileMenu}
+        title="Menu"
+        className="min-h-[380px]"
+      >
+        <div className="flex flex-col px-8 pt-12 space-y-6">
+          <ul className="space-y-4">
+            <li>
+              <Link
+                href="#"
+                onClick={closeMobileMenu}
+                className="block text-4xl font-semibold tracking-tight hover:text-accent transition-colors"
+              >
+                Products
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/about"
+                onClick={closeMobileMenu}
+                className="block text-4xl font-semibold tracking-tight hover:text-accent transition-colors"
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/blog"
+                onClick={closeMobileMenu}
+                className="block text-4xl font-semibold tracking-tight hover:text-accent transition-colors"
+              >
+                Blog
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="#pricing"
+                onClick={closeMobileMenu}
+                className="block text-4xl font-semibold tracking-tight hover:text-accent transition-colors"
+              >
+                Pricing
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="/login"
+                onClick={closeMobileMenu}
+                className="flex items-center gap-2 text-4xl font-semibold tracking-tight hover:text-accent transition-colors"
+              >
+                <User className="w-8 h-8" />
+                Login
+              </Link>
+            </li>
+          </ul>
         </div>
-      )}
+      </Sheet>
     </>
   )
 }
