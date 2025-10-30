@@ -9,7 +9,7 @@ import localFont from 'next/font/local'
 import "@/app/globals.css";
 
 export const viewport: Viewport = {
-  themeColor: "black",
+  themeColor: "light",
 };
 
 export const metadata: Metadata = {
@@ -65,8 +65,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="light"
           disableTransitionOnChange
         >
           <SiteNav />

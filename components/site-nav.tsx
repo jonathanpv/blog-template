@@ -102,7 +102,7 @@ export function SiteNav() {
               <NavigationMenuList className="m-0 p-0 list-none">
                 <NavigationMenuItem className="m-0 p-0">
                   <NavigationMenuTrigger className=" ">
-                    <span className="text-4xl leading-[20px]">Products</span>
+                    <span className="text-base leading-[20px]">Products</span>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="left-0 top-0 w-auto bg-popover text-popover-foreground border border-popover rounded-md shadow-lg p-0 min-w-[200px]">
                     <ul className="grid gap-2 p-4">
@@ -126,7 +126,7 @@ export function SiteNav() {
               <NavigationMenuList className="m-0 p-0 list-none">
                 <NavigationMenuItem className="m-0 p-0">
                   <NavigationMenuTrigger>
-                    <span className="text-4xl leading-[20px]">About</span>
+                    <span className="text-base leading-[20px]">About</span>
                   </NavigationMenuTrigger>
                   <NavigationMenuContent className="left-0 top-0 w-auto bg-popover text-popover-foreground border border-popover rounded-md shadow-lg p-0 min-w-[200px]">
                     <ul className="grid gap-2 p-4">
@@ -165,7 +165,7 @@ export function SiteNav() {
             {/* Pricing */}
             <Link
               href="/pricing"
-              className="font-sans text-4xl font-semibold tracking-tight leading-[20px] text-sidebar-foreground hover:text-sidebar-accent-foreground tracking-[-0.32px] no-underline outline-none"
+              className="font-sans text-base font-medium tracking-tight leading-[20px] text-sidebar-foreground hover:text-sidebar-accent-foreground tracking-[-0.32px] no-underline outline-none"
             >
               Pricing
             </Link>
@@ -180,7 +180,7 @@ export function SiteNav() {
               className="flex items-center gap-2"
             >
               <User className="w-4 h-4" />
-              <span className="text-4xl">Login</span>
+              <span className="text-base">Login</span>
             </Link>
           </div>
 
@@ -199,7 +199,7 @@ export function SiteNav() {
         open={isMobileMenuOpen}
         close={closeMobileMenu}
         title="Menu"
-        className="min-h-[380px]"
+        className="min-h-[380px] bg-muted"
       >
         <div className="flex flex-col px-8 pt-12 space-y-6">
           <ul className="space-y-4">
