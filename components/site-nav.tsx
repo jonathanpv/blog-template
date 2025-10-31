@@ -79,118 +79,125 @@ export function SiteNav() {
 
   return (
     <>
-      <div className="flex px-12 w-full max-w-[706px] h-[20px] justify-between items-center absolute top-10 left-1/2 -translate-x-1/2 mx-auto my-0 bg-transparent border-b border-border/20 z-50">
-        {/* Logo Section */}
-        <div className="flex w-auto gap-1 items-center shrink-0 flex-nowrap relative">
-          <div className="w-5 h-5 shrink-0 bg-[ur[](https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-10-28/wU3i34HP3z.png)] bg-cover bg-no-repeat relative z-[1]" />
-          <Button asChild variant="link">
-            <Link href="/">
-              <span className="flex w-[99px] h-5 justify-center items-start shrink-0 basis-auto font-pp-mondwest text-[20px] font-normal leading-[20px] text-foreground tracking-[-0.4px] relative text-center whitespace-nowrap z-[2]">
-              MotionMagic
-            </span>
-            </Link>
-          </Button>
-          
-        </div>
+      {/* Fixed navbar container - no padding here */}
+      <div className="fixed top-0 left-0 right-0 w-full bg-transparent z-50">
+        {/* Inner container with padding and max-width */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
+          <div className="flex h-20 items-center justify-between">
+            {/* Logo Section */}
+            <div className="flex items-center gap-1">
+              <div className="w-5 h-5 shrink-0 bg-[url(https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-10-28/wU3i34HP3z.png)] bg-cover bg-no-repeat" />
+              <Button asChild variant="link" className="p-0">
+                <Link href="/">
+                  <span className="font-pp-mondwest text-xl font-normal leading-5 tracking-tight whitespace-nowrap">
+                    MotionMagic
+                  </span>
+                </Link>
+              </Button>
+            </div>
 
-        {/* Desktop Nav + Mobile Hamburger */}
-        <div className="flex items-center gap-4">
-          {/* Desktop Nav Items */}
-          <div className="hidden md:flex w-[390px] gap-8 items-center shrink-0 relative z-[3]">
-            {/* Products Dropdown */}
-            <NavigationMenu>
-              <NavigationMenuList className="m-0 p-0 list-none">
-                <NavigationMenuItem className="m-0 p-0">
-                  <NavigationMenuTrigger className=" ">
-                    <span className="text-base leading-[20px]">Products</span>
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent className="left-0 top-0 w-auto bg-popover text-popover-foreground border border-popover rounded-md shadow-lg p-0 min-w-[200px]">
-                    <ul className="grid gap-2 p-4">
-                      {components.map((component) => (
-                        <ListItem
-                          key={component.title}
-                          title={component.title}
-                          href={component.href}
-                        >
-                          {component.description}
-                        </ListItem>
-                      ))}
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+            {/* Desktop Nav + Actions */}
+            <div className="flex items-center gap-6">
+              {/* Desktop Navigation */}
+              <nav className="hidden md:flex items-center gap-6">
+                {/* Products Dropdown */}
+                <NavigationMenu>
+                  <NavigationMenuList>
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger>
+                        <span className="text-base leading-5">Products</span>
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid gap-2 p-4 w-[400px]">
+                          {components.map((component) => (
+                            <ListItem
+                              key={component.title}
+                              title={component.title}
+                              href={component.href}
+                            >
+                              {component.description}
+                            </ListItem>
+                          ))}
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
 
-            {/* About Dropdown */}
-            <NavigationMenu>
-              <NavigationMenuList className="m-0 p-0 list-none">
-                <NavigationMenuItem className="m-0 p-0">
-                  <NavigationMenuTrigger>
-                    <span className="text-base leading-[20px]">About</span>
-                  </NavigationMenuTrigger>
-                  <NavigationMenuContent className="left-0 top-0 w-auto bg-popover text-popover-foreground border border-popover rounded-md shadow-lg p-0 min-w-[200px]">
-                    <ul className="grid gap-2 p-4">
-                      <li className="m-0 p-0">
-                        <NavigationMenuLink asChild>
-                          <Link
-                            href="/about/team"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-sidebar-accent data-[active]:text-sidebar-accent-foreground"
-                          >
-                            <div className="text-sm font-semibold tracking-tight leading-none">Team</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              Meet the team behind MotionMagic.
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                      <li className="m-0 p-0">
-                        <NavigationMenuLink asChild>
-                          <Link
-                            href="/about/careers"
-                            className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground data-[active]:bg-sidebar-accent data-[active]:text-sidebar-accent-foreground"
-                          >
-                            <div className="text-sm font-semibold tracking-tight leading-none">Careers</div>
-                            <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
-                              Join our mission to revolutionize motion design.
-                            </p>
-                          </Link>
-                        </NavigationMenuLink>
-                      </li>
-                    </ul>
-                  </NavigationMenuContent>
-                </NavigationMenuItem>
-              </NavigationMenuList>
-            </NavigationMenu>
+                {/* About Dropdown */}
+                <NavigationMenu>
+                  <NavigationMenuList>
+                    <NavigationMenuItem>
+                      <NavigationMenuTrigger>
+                        <span className="text-base leading-5">About</span>
+                      </NavigationMenuTrigger>
+                      <NavigationMenuContent>
+                        <ul className="grid gap-2 p-4 w-[300px]">
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href="/about/team"
+                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                <div className="text-sm font-semibold leading-none">Team</div>
+                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                  Meet the team behind MotionMagic.
+                                </p>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                          <li>
+                            <NavigationMenuLink asChild>
+                              <Link
+                                href="/about/careers"
+                                className="block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground"
+                              >
+                                <div className="text-sm font-semibold leading-none">Careers</div>
+                                <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+                                  Join our mission to revolutionize motion design.
+                                </p>
+                              </Link>
+                            </NavigationMenuLink>
+                          </li>
+                        </ul>
+                      </NavigationMenuContent>
+                    </NavigationMenuItem>
+                  </NavigationMenuList>
+                </NavigationMenu>
 
-            {/* Pricing */}
-            <Link
-              href="/pricing"
-              className="font-sans text-base font-medium tracking-tight leading-[20px] text-sidebar-foreground hover:text-sidebar-accent-foreground tracking-[-0.32px] no-underline outline-none"
-            >
-              Pricing
-            </Link>
-            <ThemeToggle/>
+                {/* Pricing Link */}
+                <Link
+                  href="/pricing"
+                  className="text-base font-medium leading-5 hover:text-accent-foreground transition-colors"
+                >
+                  Pricing
+                </Link>
 
-            {/* Divider */}
-            <div className="w-px h-5 shrink-0 bg-foreground/80 relative" />
+                <ThemeToggle />
 
-            {/* Login */}
-            <Link
-              href="/login"
-              className="flex items-center gap-2"
-            >
-              <User className="w-4 h-4" />
-              <span className="text-base">Login</span>
-            </Link>
+                {/* Divider */}
+                <div className="w-px h-5 bg-border" />
+
+                {/* Login Link */}
+                <Link
+                  href="/login"
+                  className="flex items-center gap-2 text-base hover:text-accent-foreground transition-colors"
+                >
+                  <User className="w-4 h-4" />
+                  <span>Login</span>
+                </Link>
+              </nav>
+
+              {/* Mobile Hamburger */}
+              <button
+                className="md:hidden p-2"
+                onClick={() => setIsMobileMenuOpen(true)}
+                aria-label="Open menu"
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+            </div>
           </div>
-
-          {/* Mobile Hamburger */}
-          <button
-            className="md:hidden p-1"
-            onClick={() => setIsMobileMenuOpen(true)}
-          >
-            <Menu className="w-6 h-6" />
-          </button>
         </div>
       </div>
 
@@ -201,7 +208,7 @@ export function SiteNav() {
         title="Menu"
         className="min-h-[380px] bg-muted"
       >
-        <div className="flex flex-col px-8 pt-12 space-y-6">
+        <nav className="flex flex-col px-8 pt-12 space-y-6">
           <ul className="space-y-4">
             <li>
               <Link
@@ -232,7 +239,7 @@ export function SiteNav() {
             </li>
             <li>
               <Link
-                href="#pricing"
+                href="/pricing"
                 onClick={closeMobileMenu}
                 className="block text-4xl font-semibold tracking-tight hover:text-accent transition-colors"
               >
@@ -250,7 +257,7 @@ export function SiteNav() {
               </Link>
             </li>
           </ul>
-        </div>
+        </nav>
       </Sheet>
     </>
   )

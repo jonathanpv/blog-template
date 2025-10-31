@@ -62,7 +62,7 @@ export default function RootLayout({
       className={`${GeistSans.variable} ${GeistMono.variable} ${fontCommitMono.variable}  ${fontPPNeuebit.variable} ${fontPPMondwest.variable} antialiased `}
       suppressHydrationWarning
     >
-      <body>
+      <body className="w-screen h-full ">
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
