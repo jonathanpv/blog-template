@@ -50,7 +50,7 @@ const Page = () => {
       <div className="flex w-[396px] items-center gap-1.5">
         {/* NPM Install Command */}
         <div className="flex h-[37px] w-[291px] items-center gap-1.5 overflow-hidden rounded-[10.35px] border border-muted bg-background px-2.5 py-1">
-          <span className="grow whitespace-nowrap font-['CommitMono'] text-sm leading-[21px] tracking-[-0.28px] text-foreground">
+          <span className="grow whitespace-nowrap font-commit-mono text-sm leading-[21px] tracking-[-0.28px] text-foreground">
             npm install motion
           </span>
           <img

@@ -97,7 +97,7 @@ const BlogSection = () => {
         })}
       </div>
 
-      <Button asChild variant={"shiny"} className="px-8 rounded-4xl font-pp-mondwest" size="lg">
+      <Button asChild variant={"shiny"} className="px-8 rounded-4xl font-geist" size="lg">
         <Link href="/blog">See More</Link>
       </Button>
     </section>
