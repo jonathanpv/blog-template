@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: "MotionMagic Blog",
     images: [
       {
-        url: "/blog-og-image.png",
+        url: "/blogog.png",
         width: 1200,
         height: 630,
         alt: "Blog image",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "MotionMagic Blog",
     description: "Designed by @uncoverlab, expanded by @magicui, implemented by @jonpadven",
-    images: ["/blog-og-image.png"],
+    images: ["/blogog.png"],
   },
 };
 
