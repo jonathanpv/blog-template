@@ -18,14 +18,7 @@ export const metadata: Metadata = {
     "Designed by @uncoverlab, expanded by @magicui, implemented by @jonpadven",
   openGraph: {
     title: "MotionMagic Blog",
-    images: [
-      {
-        url: "/blogog.png",
-        width: 1200,
-        height: 630,
-        alt: "Blog image",
-      },
-    ],
+    images: [ "/blogog.png"],
   },
   twitter: {
     card: "summary_large_image",
